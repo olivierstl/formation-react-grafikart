@@ -1,9 +1,35 @@
+class Field extends React.Component {
+  render () {
+    const {name, value, onChange} = this.props
+    return (
+    <div className="form-group">
+      <label
+        className="form-label"
+        htmlFor={name}
+      >
+        Le libellé
+      </label>
+      <input
+        className="form-control"
+        id={name}
+        name={name}
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
+    </div>)
+  }
+}
+
+
 class Home extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       /** Value linked to input text */
       firstname: 'Jean',
+      /** Value linked to Field component */
+      lastname: 'Michel',
       /** Value linked to textarea */
       description: 'Small descr',
       /** Value linked to select */
@@ -57,6 +83,11 @@ class Home extends React.Component {
           onChange={this.handleChange}
         />
       </div>
+      <Field
+        name="lastname"
+        value={this.state.lastname}
+        onChange={this.handleChange}
+      />
       <div>
         {/* Subtilité: textarea prend aussi value */}
         <label htmlFor="description">Write about you</label>
