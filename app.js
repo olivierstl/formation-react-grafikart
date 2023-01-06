@@ -135,7 +135,7 @@ class Home extends React.Component {
         Last name
       </Field>
       <div>
-        {/* Subtilité: textarea prend aussi value */}
+        {/* Textarea also takes value prop */}
         <label htmlFor="description">Write about you</label>
         <textarea
           id="description"
