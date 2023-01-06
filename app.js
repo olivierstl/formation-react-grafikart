@@ -59,6 +59,7 @@ class Home extends React.Component {
       </div>
       <div>
         {/* Subtilité: textarea prend aussi value */}
+        <label htmlFor="description">Write about you</label>
         <textarea
           id="description"
           name="description"
