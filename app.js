@@ -58,14 +58,17 @@ class Incrementer extends React.Component {
     }
   }
 
+  /** Component is mounted */
   componentDidMount () {
     this.play()
   }
-
+  
+  /** Component is gonna be unmounted */
   componentWillUnmount () {
     window.clearInterval(this.timer)
   }
 
+  /** Increment the state value */
   increment () {
     // this.setState({ value: this.state.value + 1 })
     // Code above can create issues when setState is called in chain
@@ -76,6 +79,7 @@ class Incrementer extends React.Component {
     this.setState((state, props) => ({ value: state.value + props.step }))
   }
 
+  /** Initialise the setInterval */
   play () {
     window.clearInterval(this.state.timer)
     this.setState({
@@ -83,6 +87,7 @@ class Incrementer extends React.Component {
     })
   }
 
+  /** Clear the interval */
   pause () {
     window.clearInterval(this.state.timer)
     this.setState({
@@ -90,10 +95,12 @@ class Incrementer extends React.Component {
     })
   }
 
+  /** Return the function to bind to the button */
   toggle () {
     this.state.timer ? this.pause() : this.play()
   }
 
+  /** Reset the value of the incrementer to initial start value */
   reset () {
     this.pause()
     this.play()
