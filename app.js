@@ -56,7 +56,6 @@ class Home extends React.Component {
           value={this.state.firstname}
           onChange={this.handleChange}
         />
-        <p>Current value : {this.state.name}</p>
       </div>
       <div>
         {/* Subtilité: textarea prend aussi value */}
@@ -66,7 +65,6 @@ class Home extends React.Component {
           value={this.state.description}
           onChange={this.handleChange}>
         </textarea>
-        <p>Current value : {this.state.description}</p>
       </div>
       <div>
         <label htmlFor="select">choose option</label>
@@ -79,7 +77,6 @@ class Home extends React.Component {
           <option value="demo2">Demo 2</option>
           <option value="demo3">Demo 3</option>
         </select>
-        <p>Current value : {this.state.option}</p>
       </div>
       <div>
         <label htmlFor="select">choose option</label>
@@ -93,7 +90,6 @@ class Home extends React.Component {
           <option value="demo2">Demo 2</option>
           <option value="demo3">Demo 3</option>
         </select>
-        <p>Current value : {JSON.stringify(this.state.optionmulti)}</p>
       </div>
       <div>
         <input
@@ -104,7 +100,6 @@ class Home extends React.Component {
           onChange={this.handleChange}
         />
         <label htmlFor="terms">Agree to boring terms</label>
-        <p>Current value : {JSON.stringify(this.state.terms)}</p>
       </div>
       <p>{JSON.stringify(this.state)}</p>
     </div>
