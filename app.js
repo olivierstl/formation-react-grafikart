@@ -84,6 +84,7 @@ class Home extends React.Component {
       newsletter: false
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange (e) {
@@ -115,79 +116,98 @@ class Home extends React.Component {
     })
   }
 
+  handleSubmit (e) {
+    e.preventDefault()
+    const data = JSON.stringify(this.state)
+    console.log(data)
+    /** Add some form logic in here */
+  }
+
   render () {
-    return <div className="container">
-      <div>
-        <label htmlFor="firstname">First name</label>
-        <input
-          type="text"
-          id="firstname"
-          name="firstname"
-          value={this.state.firstname}
-          onChange={this.handleChange}
-        />
-      </div>
-      <Field
-        name="lastname"
-        value={this.state.lastname}
-        onChange={this.handleChange}
+    return (
+      <form
+        className="container"
+        onSubmit={this.handleSubmit}
       >
-        Last name
-      </Field>
-      <div>
-        {/* Textarea also takes value prop */}
-        <label htmlFor="description">Write about you</label>
-        <textarea
-          id="description"
-          name="description"
-          value={this.state.description}
-          onChange={this.handleChange}>
-        </textarea>
-      </div>
-      <div>
-        <label htmlFor="select">choose option</label>
-        <select
-          id="select"
-          name="option"
-          value={this.state.option}
-          onChange={this.handleChange}>
-          <option value="demo1">Demo 1</option>
-          <option value="demo2">Demo 2</option>
-          <option value="demo3">Demo 3</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="select">choose option</label>
-        <select
-          id="select-multi"
-          name="optionmulti"
-          multiple
-          value={this.state.optionmulti}
-          onChange={this.handleChange}>
-          <option value="demo1">Demo 1</option>
-          <option value="demo2">Demo 2</option>
-          <option value="demo3">Demo 3</option>
-        </select>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="terms"
-          name="terms"
-          checked={this.state.terms}
+        <div>
+          <label htmlFor="firstname">First name</label>
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            value={this.state.firstname}
+            onChange={this.handleChange}
+          />
+        </div>
+        <Field
+          name="lastname"
+          value={this.state.lastname}
           onChange={this.handleChange}
-        />
-        <label htmlFor="terms">Agree to boring terms</label>
-      </div>
-      <Checkbox
-        name="newsletter"
-        checked={this.state.newsletter}
-        onChange={this.handleChange}
-      >
-        Susbscribe to newsletter
-      </Checkbox>
-      <p>{JSON.stringify(this.state)}</p>
-    </div>
+        >
+          Last name
+        </Field>
+        <div>
+          {/* Textarea also takes value prop */}
+          <label htmlFor="description">Write about you</label>
+          <textarea
+            id="description"
+            name="description"
+            value={this.state.description}
+            onChange={this.handleChange}>
+          </textarea>
+        </div>
+        <div>
+          <label htmlFor="select">choose option</label>
+          <select
+            id="select"
+            name="option"
+            value={this.state.option}
+            onChange={this.handleChange}>
+            <option value="demo1">Demo 1</option>
+            <option value="demo2">Demo 2</option>
+            <option value="demo3">Demo 3</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="select">choose option</label>
+          <select
+            id="select-multi"
+            name="optionmulti"
+            multiple
+            value={this.state.optionmulti}
+            onChange={this.handleChange}>
+            <option value="demo1">Demo 1</option>
+            <option value="demo2">Demo 2</option>
+            <option value="demo3">Demo 3</option>
+          </select>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            checked={this.state.terms}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="terms">Agree to boring terms</label>
+        </div>
+        <Checkbox
+          name="newsletter"
+          checked={this.state.newsletter}
+          onChange={this.handleChange}
+        >
+          Susbscribe to newsletter
+        </Checkbox>
+        <div className="form-group">
+          <button
+            className="btn btn-primary"
+            type="submit">
+            Send
+          </button>
+        </div>
+        <p>{JSON.stringify(this.state)}</p>
+      </form>
+    )
   }
 }
 
