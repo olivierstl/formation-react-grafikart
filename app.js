@@ -17,6 +17,26 @@ function BoilingVerdict ({className, celsius}) {
   }
   return null
 }
+
+function TemperatureInput ({className, value, name, onChange, scale, children}) {
+  return (
+    <div className={`form-group ${className}`}>
+      <label
+        className="form-label"
+        htmlFor={name}
+      >
+        {children}
+      </label>
+      <input
+        id={name}
+        className="form-control"
+        name={name}
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  )
 }
 
 class App extends React.Component {
@@ -25,6 +45,16 @@ class App extends React.Component {
     this.state = {
       fieldtemp: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange (e) {
+    const fieldName = e.target.name
+    const fieldValue = e.target.value
+
+    this.setState({
+      [fieldName]: fieldValue
+    })
   }
 
   render () {
@@ -32,6 +62,15 @@ class App extends React.Component {
     return (
       <main className="container py-5">
         <h1 className="fw-bold mb-5">TP Celsius / Fahrenheit</h1>
+        <TemperatureInput
+          className="mb-3"
+          name="fieldtemp"
+          value={fieldtemp}
+          onChange={this.handleChange}
+        >
+          Enter temperature in {scaleNames['c']}
+        </TemperatureInput>
+
         <BoilingVerdict
           celsius={+fieldtemp}
         />
