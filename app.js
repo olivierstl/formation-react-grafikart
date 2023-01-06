@@ -56,6 +56,8 @@ class Incrementer extends React.Component {
       value: this.props.start,
       timer: null
     }
+    this.toggle = this.toggle.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   /** Component is mounted */
@@ -113,8 +115,8 @@ class Incrementer extends React.Component {
         {this.state.value}
         {this.state.timer ? '' : ' (paused)'}
       </p>
-      <button onClick={this.toggle.bind(this)}>Pause / Resume</button>
-      <button onClick={this.reset.bind(this)}>Reset</button>
+      <button onClick={this.toggle}>Pause / Resume</button>
+      <button onClick={this.reset}>Reset</button>
     </div>
   }
 }
