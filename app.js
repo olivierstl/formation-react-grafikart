@@ -52,13 +52,14 @@ class Clock extends React.Component {
 class Incrementer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { value: this.props.start }
-    this.timer = null
+    this.state = {
+      value: this.props.start,
+      timer: null
+    }
   }
 
   componentDidMount () {
-    // this.setState({ value: this.props.start })
-    this.timer = window.setInterval(this.increment.bind(this), 1500)
+    this.play()
   }
 
   componentWillUnmount () {
@@ -72,11 +73,42 @@ class Incrementer extends React.Component {
     // this.setState(function(state, props) {
     //   return { value: this.state.value + 1 }
     // })
-    this.setState((state, props) => ({ value: state.value + props.step}))
+    this.setState((state, props) => ({ value: state.value + props.step }))
+  }
+
+  play () {
+    window.clearInterval(this.state.timer)
+    this.setState({
+      timer: window.setInterval(this.increment.bind(this), 1500)
+    })
+  }
+
+  pause () {
+    window.clearInterval(this.state.timer)
+    this.setState({
+      timer: null
+    })
+  }
+
+  toggle () {
+    this.state.timer ? this.pause() : this.play()
+  }
+
+  reset () {
+    this.pause()
+    this.play()
+    this.setState((state, props) => ({value: props.start}))
   }
 
   render () {
-    return <div>{this.state.value}</div>
+    return <div>
+      <p>
+        {this.state.value}
+        {this.state.timer ? '' : ' (paused)'}
+      </p>
+      <button onClick={this.toggle.bind(this)}>Pause / Resume</button>
+      <button onClick={this.reset.bind(this)}>Reset</button>
+    </div>
   }
 }
 
