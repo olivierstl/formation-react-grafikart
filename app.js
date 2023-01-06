@@ -1,21 +1,41 @@
-function BoilingVerdict ({celsius}) {
+function BoilingVerdict ({className, celsius}) {
+  if (isNaN(celsius)) {
+    return (
+      <p className={`${className} alert alert-warning`}>
+        Please enter a correct number
+      </p>
+    )
+  } else if (celsius) {
   const isBoiling = celsius >= 100
-  const className = isBoiling ? 'alert alert-success' : 'alert alert-info'
+    const dynamicClass = isBoiling ? 'alert alert-success' : 'alert alert-info'
 
   return (
-    <p className={className}>
+      <p className={`${className} ${dynamicClass}`}>
       {celsius}°C {isBoiling ? `is boiling` : `is not boiling`}
     </p>
   )
+  }
+  return null
+}
 }
 
 class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      fieldtemp: ''
+    }
+  }
+
   render () {
+    const { fieldtemp } = this.state
     return (
       <main className="container py-5">
         <h1 className="fw-bold mb-5">TP Celsius / Fahrenheit</h1>
-        <BoilingVerdict celsius={50} />
-        <BoilingVerdict celsius={110} />
+        <BoilingVerdict
+          celsius={+fieldtemp}
+        />
+        {/* <BoilingVerdict celsius={110} /> */}
       </main>
     )
   }
