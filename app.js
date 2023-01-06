@@ -85,13 +85,40 @@ Incrementer.defaultProps = {
   step: 1
 }
 
+/** Exemple component with basic event use case */
+// class ManualIncrementer extends React.Component {
+
+//   constructor(props) {
+//     super(props)
+//     this.state = { n: 0 }
+//   }
+
+//   increment (e) {
+//     /**
+//      * React use synthetic events instead of native
+//      * https://fr.reactjs.org/docs/events.html
+//      */
+//     console.log(e)
+//     e.preventDefault()
+//     this.setState((state, props) => ({n: state.n + 1}))
+//   }
+
+//   render () {
+//     return <div>
+//       valeur: {this.state.n}
+//       <button onClick={this.increment.bind(this)}>Incrémenter</button>
+//     </div>
+//   }
+// }
+
 function Home () {
   return <div>
     <Welcome name="Jean"/>
     <Welcome name="Michel"/>
     <Clock/>
     <Incrementer start={10}/>
-    <Incrementer start={100} step={10}/>
+    {/* <Incrementer start={100} step={10}/> */}
+    {/* <ManualIncrementer /> */}
   </div>
 }
 
