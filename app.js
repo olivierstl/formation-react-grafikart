@@ -1,26 +1,26 @@
 class Field extends React.Component {
   render () {
-    const {name, value, onChange} = this.props
+    const {name, value, onChange, children} = this.props
     return (
-    <div className="form-group">
-      <label
-        className="form-label"
-        htmlFor={name}
-      >
-        Le libellé
-      </label>
-      <input
-        className="form-control"
-        id={name}
-        name={name}
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </div>)
+      <div className="form-group">
+        <label
+          className="form-label"
+          htmlFor={name}
+        >
+          {children}
+        </label>
+        <input
+          className="form-control"
+          id={name}
+          name={name}
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    )
   }
 }
-
 
 class Home extends React.Component {
   constructor (props) {
@@ -72,7 +72,7 @@ class Home extends React.Component {
   }
 
   render () {
-    return <div>
+    return <div className="container">
       <div>
         <label htmlFor="firstname">First name</label>
         <input
@@ -87,7 +87,9 @@ class Home extends React.Component {
         name="lastname"
         value={this.state.lastname}
         onChange={this.handleChange}
-      />
+      >
+        Last name
+      </Field>
       <div>
         {/* Subtilité: textarea prend aussi value */}
         <label htmlFor="description">Write about you</label>
