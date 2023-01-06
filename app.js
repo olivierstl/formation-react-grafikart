@@ -1,25 +1,46 @@
-class Field extends React.Component {
-  render () {
-    const {name, value, onChange, children} = this.props
-    return (
-      <div className="form-group">
-        <label
-          className="form-label"
-          htmlFor={name}
-        >
-          {children}
-        </label>
-        <input
-          className="form-control"
-          id={name}
-          name={name}
-          type="text"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-    )
-  }
+// class Field extends React.Component {
+//   render () {
+//     const {name, value, onChange, children} = this.props
+//     return (
+//       <div className="form-group">
+//         <label
+//           className="form-label"
+//           htmlFor={name}
+//         >
+//           {children}
+//         </label>
+//         <input
+//           className="form-control"
+//           id={name}
+//           name={name}
+//           type="text"
+//           value={value}
+//           onChange={onChange}
+//         />
+//       </div>
+//     )
+//   }
+// }
+
+function Field ({name, value, onChange, children}){
+  return (
+    <div className="form-group">
+      <label
+        className="form-label"
+        htmlFor={name}
+      >
+        {children}
+      </label>
+      <input
+        className="form-control"
+        id={name}
+        name={name}
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  )
 }
 
 class Home extends React.Component {
