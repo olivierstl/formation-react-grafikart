@@ -3,7 +3,7 @@ class Home extends React.Component {
     super(props)
     this.state = {
       /** Value linked to input text */
-      name: 'Michel',
+      firstname: 'Jean',
       /** Value linked to textarea */
       description: 'Small descr',
       /** Value linked to select */
@@ -48,12 +48,12 @@ class Home extends React.Component {
   render () {
     return <div>
       <div>
-        <label htmlFor="name">My name</label>
+        <label htmlFor="firstname">First name</label>
         <input
           type="text"
-          id="name"
-          name="name"
-          value={this.state.name}
+          id="firstname"
+          name="firstname"
+          value={this.state.firstname}
           onChange={this.handleChange}
         />
         <p>Current value : {this.state.name}</p>
