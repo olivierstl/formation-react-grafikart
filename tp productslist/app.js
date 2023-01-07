@@ -7,6 +7,23 @@ const PRODUCTS = [
   {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
 ]
 
+/** Creates the table shell */
+function ProductTable({products}) {
+  return (
+    <table className="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  )
+}
+
 /** Main component (for now) */
 class FilterableProductTable extends React.Component {
 
@@ -14,7 +31,7 @@ class FilterableProductTable extends React.Component {
     const {products} = this.props
 
     return (
-      <div>{JSON.stringify(products)}</div>
+      <ProductTable products={products}/>
     )
   }
 }
