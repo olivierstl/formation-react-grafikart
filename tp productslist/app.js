@@ -72,6 +72,48 @@ function ProductTable({products}) {
   )
 }
 
+class SearchBar extends React.Component {
+
+  render () {
+
+    return (
+      <div>
+        {/* Search input field */}
+        <div className="form-group">
+          <label
+            className="form-label"
+            htmlFor="search"
+          >
+            Search product
+          </label>
+          <input
+            id="search"
+            className="form-control"
+            type="text"
+            name="search"
+          />
+        </div>
+
+        {/* Checkbox field */}
+        <div className="form-check mt-2">
+          <input
+            id="instock"
+            className="form-check-input"
+            type="checkbox"
+            name="instock"
+          />
+          <label
+            className="form-check-label"
+            htmlFor="instock"
+          >
+            Only show products in stock
+          </label>
+        </div>
+      </div>
+    )
+  }
+}
+
 /** Main component (for now) */
 class FilterableProductTable extends React.Component {
 
@@ -79,7 +121,14 @@ class FilterableProductTable extends React.Component {
     const products = this.props.products
 
     return (
-      <ProductTable products={products}/>
+      <React.Fragment>
+        <p>{JSON.stringify(this.state)}</p>
+        <SearchBar
+        />
+        <ProductTable
+          products={products}
+        />
+      </React.Fragment>
     )
   }
 }
