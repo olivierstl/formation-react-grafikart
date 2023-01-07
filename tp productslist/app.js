@@ -7,6 +7,25 @@ const PRODUCTS = [
   {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
 ]
 
+/** Table category row (th > td colspan 2) */
+function PorductCategoryRow ({category}) {
+  return (
+    <tr>
+      <th colSpan="2">{category}</th>
+    </tr>
+  )
+}
+
+/** Table row component  */
+function ProductRow ({product}) {
+  return (
+    <tr>
+      <td>{product.name}</td>
+      <td>{product.price}</td>
+    </tr>
+  )
+}
+
 /** Creates the table shell */
 function ProductTable({products}) {
   return (
