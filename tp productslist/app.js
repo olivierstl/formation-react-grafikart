@@ -28,6 +28,31 @@ function ProductRow ({product}) {
 
 /** Creates the table shell */
 function ProductTable({products}) {
+  const rows = []
+  let lastCategory = null
+
+  /** Generate the table rows */
+  products.forEach((product, index) => {
+    /** New category > add category row first */
+    if (product.category !== lastCategory) {
+      lastCategory = product.category
+      rows.push(
+        <PorductCategoryRow
+          key={product.category}
+          category={product.category}
+        />
+      )
+    }
+
+    /** Create new table row wtih product data */
+    rows.push(
+      <ProductRow
+        key={product.name}
+        product={product}
+      />
+    )
+  })
+
   return (
     <table className="table">
       <thead>
@@ -37,7 +62,7 @@ function ProductTable({products}) {
         </tr>
       </thead>
       <tbody>
-
+        {rows}
       </tbody>
     </table>
   )
