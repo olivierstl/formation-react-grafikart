@@ -36,7 +36,7 @@ function ProductTable({products}) {
   let lastCategory = null
 
   /** Generate the table rows */
-  products.forEach((product, index) => {
+  products.forEach(product => {
     /** New category > add category row first */
     if (product.category !== lastCategory) {
       lastCategory = product.category
