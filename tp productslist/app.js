@@ -18,9 +18,13 @@ function PorductCategoryRow ({category}) {
 
 /** Table row component  */
 function ProductRow ({product}) {
+  const name = product.stocked
+    ? product.name
+    : <span className="text-danger">{product.name} (out of stock)</span>
+
   return (
     <tr>
-      <td>{product.name}</td>
+      <td>{name}</td>
       <td>{product.price}</td>
     </tr>
   )
