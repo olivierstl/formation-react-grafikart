@@ -47,7 +47,7 @@ function ProductTable({products}) {
 class FilterableProductTable extends React.Component {
 
   render () {
-    const {products} = this.props
+    const products = this.props.products
 
     return (
       <ProductTable products={products}/>
