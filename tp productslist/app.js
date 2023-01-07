@@ -31,12 +31,22 @@ function ProductRow ({product}) {
 }
 
 /** Creates the table shell */
-function ProductTable({products}) {
+function ProductTable({products, filterText, inStockOnly}) {
   const rows = []
   let lastCategory = null
 
   /** Generate the table rows */
   products.forEach(product => {
+    /** Ignore out of stock products if needed */
+    if (inStockOnly && !product.stocked) {
+      return
+    }
+
+    /** Ignore products out of filter scope */
+    if (product.name.indexOf(filterText) === -1) {
+      return
+    }
+
     /** New category > add category row first */
     if (product.category !== lastCategory) {
       lastCategory = product.category
@@ -149,7 +159,7 @@ class FilterableProductTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      filterText: 'foot',
+      filterText: '',
       inStockOnly: false
     }
 
@@ -173,7 +183,6 @@ class FilterableProductTable extends React.Component {
 
     return (
       <React.Fragment>
-        <p>{JSON.stringify(this.state)}</p>
         <SearchBar
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
@@ -182,6 +191,8 @@ class FilterableProductTable extends React.Component {
         />
         <ProductTable
           products={products}
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
         />
       </React.Fragment>
     )
